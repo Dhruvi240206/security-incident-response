@@ -1,7 +1,7 @@
-# Simulated vulnerable application
+import os
 
 USERNAME = "admin"
-PASSWORD = "TestPassword123"
+PASSWORD = os.getenv("APP_PASSWORD")
 
 def login(username, password):
     if username == USERNAME and password == PASSWORD:
