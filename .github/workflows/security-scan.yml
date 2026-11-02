@@ -1,0 +1,22 @@
+name: Security Incident Detection
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Detect Hardcoded Secrets
+        run: python detect_secrets.py
